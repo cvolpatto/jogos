@@ -3,7 +3,7 @@ import re
 from tkinter import END, N
 import streamlit as st
 
-#st.title('Escolha o jogo desejado')
+#st.title('Escolha o jogo desejado') # no meio da tela
 
 op = st.sidebar.selectbox("Escolha o jogo",("1 - mega-sena","2 - lotofácil","3 - quina"))
 
@@ -17,7 +17,7 @@ if op == "2 - lotofácil":
 
 #numero = st.debar.number_input("numero", value=1,max_value=10, min_value=0)
 #slider = st.sidebar.slider("meu texto", 50, 90 , 70)
-
+"""
 
 #st.selectbox("Escolha o jogo",("1 - mega-sena","2 - lotofácil","3 - quina"))
 print ("Digite o numero do jogo: \n")
@@ -195,7 +195,7 @@ if jogo == 8:
                 strs = (array_jogos)
                 strs.sort()
             print("jogo" + str(indice_jogos+1) + ": " + str(strs))
-"""
+
     def select_random_Ns(lst, n):
         random.shuffle(lst)
         result = []
@@ -205,7 +205,7 @@ if jogo == 8:
      
         lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         print(select_random_Ns(lst, 2))
-        """
+
 END
 
 if jogo == 9:
@@ -227,3 +227,5 @@ if jogo == 9:
     print("O mês escolhido é: ", random.sample(trevo,2))
 
 END
+
+"""
