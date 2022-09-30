@@ -1,8 +1,9 @@
 from cgitb import text
 import random
 import re
-from tkinter import END, N
+#from tkinter import END, N
 import streamlit as st
+
 
 #st.title('Escolha o jogo desejado') # no meio da tela
 arrary_jogos = []
@@ -31,6 +32,7 @@ if op == "1 - mega-sena":
                         strs = (array_jogos)
                         strs.sort()
             st.write("jogo" + str(indice_jogos+1) + ": " + str(strs))
+
 
 
 
