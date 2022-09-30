@@ -1,3 +1,4 @@
+from cgitb import text
 import random
 import re
 from tkinter import END, N
