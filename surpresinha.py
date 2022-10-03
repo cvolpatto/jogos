@@ -1,8 +1,13 @@
 from cgitb import text
 import random
 import re
+from selectors import SelectSelector
+from tkinter.tix import Select
+from django.forms import SelectMultiple
+from jinja2 import select_autoescape
 #from tkinter import END, N
 import streamlit as st
+from random import randint
 import numpy as np
 
 st.title('Gerador de Jogos para Loterias Caixa')
@@ -160,7 +165,6 @@ if op == "7 - dia de sorte":
         button = st.button("Confirmar")
 
         if button:
-            qtd_numeros = (10)
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
                     for indice_numeros in range(qtd_numeros):
@@ -184,7 +188,6 @@ if op == "8 - +milionaria":
         button = st.button("Confirmar")
 
         if button:
-            qtd_numeros = (10)
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
                     for indice_numeros in range(qtd_numeros):
@@ -195,7 +198,7 @@ if op == "8 - +milionaria":
                         strs = (array_jogos)
                         strs.sort()
                     st.success("JOGO " + str(indice_jogos+1) + ": " + str(strs))
-            trevo = ['1','2','3','4','5','6']
+            trevo = [1,2,3,4,5,6]
             def selectRandom(trevo):
                 return random.choice(trevo)
-            st.success("O mês escolhido é:  " + selectRandom(trevo))
+            st.success("O trevo escolhido é:  " + random.shuffle(trevo))
