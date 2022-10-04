@@ -2,13 +2,12 @@ from cgitb import text
 import random
 import re
 from selectors import SelectSelector
-#from tkinter.tix import Select
 from django.forms import SelectMultiple
 from jinja2 import select_autoescape
-#from tkinter import END, N
 import streamlit as st
 from random import randint
 import numpy as np
+from django.forms import SelectMultiple
 
 st.title('Gerador de Jogos para Loterias Caixa')
 
