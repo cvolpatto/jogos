@@ -2,7 +2,7 @@ from cgitb import text
 import random
 import re
 from selectors import SelectSelector
-from tkinter.tix import Select
+#from tkinter.tix import Select
 from django.forms import SelectMultiple
 from jinja2 import select_autoescape
 #from tkinter import END, N
