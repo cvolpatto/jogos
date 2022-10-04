@@ -199,6 +199,10 @@ if op == "8 - +milionaria":
                         strs.sort()
                     st.success("JOGO " + str(indice_jogos+1) + ": " + str(strs))
             trevo = [1,2,3,4,5,6]
+            trevo_result = []
             def selectRandom(trevo):
                 return random.choice(trevo)
-            st.success("O trevo escolhido é:  " + random.shuffle(trevo))
+            trevo_result = random.sample(trevo,2)
+            st.success("O mês escolhido é: " + str(trevo_result))
+
+            
