@@ -2,10 +2,12 @@ from cgitb import text
 import random
 import re
 from selectors import SelectSelector
+from click import option
 from jinja2 import select_autoescape
 import streamlit as st
 from random import randint
 import numpy as np
+import locale
 
 st.title('Gerador de Jogos para Loterias Caixa')
 
@@ -41,6 +43,32 @@ if op == "1 - mega-sena":
         button = st.button("Confirmar")
 
         if button:
+            if qtd_numeros == 6: 
+                valor = 4.50 
+            if qtd_numeros == 7:
+                valor = 31.50
+            if qtd_numeros == 8:
+                valor = 126
+            if qtd_numeros == 9:
+                valor = 378
+            if qtd_numeros == 10:
+                valor = 945
+            if qtd_numeros == 11:
+                valor = 2079
+            if qtd_numeros == 12:
+                valor = 4158
+            if qtd_numeros == 13:
+                valor = 7722
+            if qtd_numeros == 14:
+                valor = 13513.50
+            if qtd_numeros  == 15:
+                valor = 22522.50
+            total = qtd_jogos
+            resultado_vt = valor * total
+            texto_resultado_vt = f"R$ {resultado_vt:_.2f}"
+            texto_resultado_vt = texto_resultado_vt.replace(".",",").replace("_",".")
+            st.success(f'Valor da Aposta {texto_resultado_vt}')
+
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
                     for indice_numeros in range(qtd_numeros):
@@ -59,6 +87,24 @@ if op == "2 - lotofácil":
         button = st.button("Confirmar")
 
         if button:
+            if qtd_numeros == 15: 
+                valor = 2.50 
+            if qtd_numeros == 16:
+                valor = 40
+            if qtd_numeros == 17:
+                valor = 340
+            if qtd_numeros == 18:
+                valor = 2040
+            if qtd_numeros == 19:
+                valor = 9690
+            if qtd_numeros == 20:
+                valor = 38760
+            total = qtd_jogos
+            resultado_vt = valor * total
+            texto_resultado_vt = f"R$ {resultado_vt:_.2f}"
+            texto_resultado_vt = texto_resultado_vt.replace(".",",").replace("_",".")
+            st.success(f'Valor da Aposta {texto_resultado_vt}')
+
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
                     for indice_numeros in range(qtd_numeros):
@@ -77,6 +123,35 @@ if op == "3 - quina":
         button = st.button("Confirmar")
 
         if button:
+            
+            if qtd_numeros == 5: 
+                valor = 2 
+            if qtd_numeros == 2:
+                valor = 12
+            if qtd_numeros == 7:
+                valor = 42
+            if qtd_numeros == 8:
+                valor = 112
+            if qtd_numeros == 9:
+                valor = 252
+            if qtd_numeros == 10:
+                valor = 504
+            if qtd_numeros == 11:
+                valor = 924
+            if qtd_numeros == 12:
+                valor = 1584
+            if qtd_numeros == 13:
+                valor = 2574
+            if qtd_numeros  == 14:
+                valor = 4004
+            if qtd_numeros == 15:
+                valor = 6006
+            total = qtd_jogos
+            resultado_vt = valor * total
+            texto_resultado_vt = f"R$ {resultado_vt:_.2f}"
+            texto_resultado_vt = texto_resultado_vt.replace(".",",").replace("_",".")
+            st.success(f'Valor da Aposta {texto_resultado_vt}')
+
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
                     for indice_numeros in range(qtd_numeros):
@@ -95,6 +170,12 @@ if op == "4 - lotomania":
 
         if button:
             qtd_numeros = (50)
+            valor = 2.50
+            total = qtd_jogos
+            resultado_vt = valor * total
+            texto_resultado_vt = f"R$ {resultado_vt:_.2f}"
+            texto_resultado_vt = texto_resultado_vt.replace(".",",").replace("_",".")
+            st.success(f'Valor da Aposta {texto_resultado_vt}')
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
                     for indice_numeros in range(qtd_numeros):
@@ -104,14 +185,22 @@ if op == "4 - lotomania":
                         array_jogos.append(numero_sorteado)
                         strs = (array_jogos)
                         strs.sort()
+                    
                     st.success("JOGO " + str(indice_jogos+1) + ": " + str(strs))
 
 if op == "5 - timemania":
         qtd_jogos = st.number_input("Digite a quantidade de jogos da timemania:", max_value=100, min_value=1)
-                
+       
         button = st.button("Confirmar")
 
         if button:
+            valor = 3
+            total = qtd_jogos
+            resultado_vt = valor * total
+            texto_resultado_vt = f"R$ {resultado_vt:_.2f}"
+            texto_resultado_vt = texto_resultado_vt.replace(".",",").replace("_",".")
+            st.success(f'Valor da Aposta {texto_resultado_vt}')
+
             qtd_numeros = (10)
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
@@ -122,7 +211,10 @@ if op == "5 - timemania":
                         array_jogos.append(numero_sorteado)
                         strs = (array_jogos)
                         strs.sort()
+                    
                     st.success("JOGO " + str(indice_jogos+1) + ": " + str(strs))
+            
+            
             time = ['ABC/RN','ALTOS/PI','AMERICA/MG','AMERICA/RN','APARECIDENSE/GO','ATHLETICO/PR','ATLETICO/AC',
                     'ATLETICO/CE','ATLETICO/GO','ATLETICO/MG','AVAI/SC','BAHIA/BA','BOA ESPORTE/MG','BOAVISTA/RJ','BOTAFOGO/PB',
                     'BOTAFOGO/RJ','BOTAFOGO/SP','BRAGANTINO/SP','BRASIL/RS','BRASILIENSE/DF','BRUSQUE/SC','CAMPINENSE/PB',
@@ -137,7 +229,7 @@ if op == "5 - timemania":
             def selectRandom(time):
                 return random.choice(time)
             st.success("O Time escolhido é:  " + selectRandom(time))
-
+            
 if op == "6 - dupla sena":
         qtd_jogos = st.number_input("Digite a quantidade de jogos da dupla sena:", max_value=200, min_value=1)
         qtd_numeros = st.number_input("Digite a quantidade de 6 à 15 números:", max_value=15, min_value=6)
@@ -145,6 +237,33 @@ if op == "6 - dupla sena":
         button = st.button("Confirmar")
 
         if button:
+
+            if qtd_numeros == 6: 
+                valor = 2.50 
+            if qtd_numeros == 7:
+                valor = 17.50
+            if qtd_numeros == 8:
+                valor = 70
+            if qtd_numeros == 9:
+                valor = 210
+            if qtd_numeros == 10:
+                valor = 525
+            if qtd_numeros == 11:
+                valor = 1155
+            if qtd_numeros == 12:
+                valor = 2310
+            if qtd_numeros == 13:
+                valor = 4290
+            if qtd_numeros == 14:
+                valor = 7507.50
+            if qtd_numeros  == 15:
+                valor = 12512.50
+            total = qtd_jogos
+            resultado_vt = valor * total
+            texto_resultado_vt = f"R$ {resultado_vt:_.2f}"
+            texto_resultado_vt = texto_resultado_vt.replace(".",",").replace("_",".")
+            st.success(f'Valor da Aposta {texto_resultado_vt}')
+
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
                     for indice_numeros in range(qtd_numeros):
@@ -162,6 +281,32 @@ if op == "7 - dia de sorte":
         button = st.button("Confirmar")
 
         if button:
+
+            if qtd_numeros == 7: 
+                valor = 2
+            if qtd_numeros == 8:
+                valor = 16
+            if qtd_numeros == 9:
+                valor = 72
+            if qtd_numeros == 10:
+                valor = 240
+            if qtd_numeros == 11:
+                valor = 660
+            if qtd_numeros == 12:
+                valor = 1584
+            if qtd_numeros == 13:
+                valor = 3432
+            if qtd_numeros == 14:
+                valor = 6864
+            if qtd_numeros == 15:
+                valor = 12870
+
+            total = qtd_jogos
+            resultado_vt = valor * total
+            texto_resultado_vt = f"R$ {resultado_vt:_.2f}"
+            texto_resultado_vt = texto_resultado_vt.replace(".",",").replace("_",".")
+            st.success(f'Valor da Aposta {texto_resultado_vt}')
+
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
                     for indice_numeros in range(qtd_numeros):
@@ -185,6 +330,28 @@ if op == "8 - +milionaria":
         button = st.button("Confirmar")
 
         if button:
+
+            if qtd_numeros == 6: 
+                valor = 6 
+            if qtd_numeros == 7:
+                valor = 42
+            if qtd_numeros == 8:
+                valor = 168
+            if qtd_numeros == 9:
+                valor = 504
+            if qtd_numeros == 10:
+                valor = 1260
+            if qtd_numeros == 11:
+                valor = 2772
+            if qtd_numeros == 12:
+                valor = 5544
+
+            total = qtd_jogos
+            resultado_vt = valor * total
+            texto_resultado_vt = f"R$ {resultado_vt:_.2f}"
+            texto_resultado_vt = texto_resultado_vt.replace(".",",").replace("_",".")
+            st.success(f'Valor da Aposta {texto_resultado_vt}')
+
             for indice_jogos in range(qtd_jogos):
                     array_jogos = []
                     for indice_numeros in range(qtd_numeros):
@@ -200,6 +367,6 @@ if op == "8 - +milionaria":
             def selectRandom(trevo):
                 return random.choice(trevo)
             trevo_result = random.sample(trevo,2)
-            st.success("O mês escolhido é: " + str(trevo_result))
+            st.success("O trevo escolhido é: " + str(trevo_result))
 
             
